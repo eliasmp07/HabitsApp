@@ -63,25 +63,33 @@
 
 ---
 
-## 📂 Arquitectura del Proyecto
+## 📂 Estructura del Proyecto (Modular)
 
-El proyecto está modularizado para mejorar la separación de conceptos y la escalabilidad:
+La aplicación utiliza un sistema de módulos para desacoplar responsabilidades:
 
-* **`:core`**: Funcionalidades compartidas y componentes UI comunes.
-* **`:authentication`**: Gestión de usuarios (Data, DI, Domain, Presentation).
-* **`:home`**: Módulo principal. Contiene la gestión de hábitos, Room, AlarmManager y WorkManager.
-* **`:onboarding`**: Flujo inicial y persistencia de `DataPreferences`.
-* **`:settings`**: Ajustes de usuario y cierre de sesión.
-* **`:navigation`**: Orquestación central de rutas y grafos de navegación.
+- **`:core`**: Funcionalidades compartidas y componentes UI base.
+- **`:authentication`**: Gestión de usuarios, repositorios de sesión y validaciones.
+- **`:home`**: Módulo central de hábitos, base de datos local y lógica de alarmas.
+- **`:onboarding`**: Pantallas de introducción y gestión de `DataStore` para estados de primer inicio.
+- **`:settings`**: Configuración de perfil y utilidades de cuenta.
+- **`:navigation`**: Grafo de navegación centralizado y rutas.
 
 ---
 
 ## 🤝 Contribución
 
-Este proyecto es de uso privado/interno. Si eres parte del equipo de desarrollo, por favor sigue los flujos de trabajo establecidos en la arquitectura modular.
+¡Este proyecto está abierto a contribuciones! Si quieres ayudar a mejorarlo, sigue estos pasos:
+
+1. **Haz un Fork** del proyecto.
+2. **Crea una rama** para tu mejora (`git checkout -b feature/NuevaFuncionalidad`).
+3. **Realiza tus cambios** y haz un **Commit** descriptivo (`git commit -m 'Añadida funcionalidad X'`).
+4. **Sube tus cambios** (`git push origin feature/NuevaFuncionalidad`).
+5. **Abre un Pull Request** explicando tus cambios detalladamente.
+
+Cualquier sugerencia sobre la arquitectura o nuevas librerías es bienvenida.
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto es propiedad de **Elías Mena Pech**. Queda prohibida su reproducción total o parcial sin autorización.
+Este proyecto es distribuido bajo la licencia **MIT**. Siéntete libre de usarlo, editarlo y compartirlo.
