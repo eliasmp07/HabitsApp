@@ -1,67 +1,87 @@
-# Aplicación OfflineFirst para Gestión de Hábitos con Autenticación
-Esta aplicación está diseñada para la gestión de hábitos con una estrategia "OfflineFirst", garantizando que las funcionalidades clave estén disponibles incluso sin conexión a internet. La arquitectura del proyecto está basada en principios de Clean Architecture y el patrón de diseño MVVM (Model-View-ViewModel), los principios SOLID, utilizando las últimas tecnologías y herramientas de desarrollo para Android.
-## Tecnologías y Herramientas Utilizadas
--Jetpack Compose: Para la creación de interfaces de usuario modernas y reactivas.
-- FirebaseAuth: Para la autenticación segura de usuarios.
-- RealTimeDatabase: Para el almacenamiento y sincronización de datos en tiempo real.
-- WorkManager: Para la gestión de tareas en segundo plano.
-- AlarmManager: Para la programación de alertas y recordatorios.
-- Retrofit: Para las comunicaciones de red y consumo de APIs.
-- Hilt: Para la inyección de dependencias, simplificando la gestión de componentes.
-- Room: Para el almacenamiento de datos local, permitiendo una estrategia OfflineFirst.
-- Coroutines: Para la programación asíncrona, facilitando operaciones concurrentes.
-- NavigationCompose: Para la navegación entre pantallas utilizando Jetpack Compose.
-- Material Design: Para garantizar una interfaz de usuario intuitiva y consistente.
-- Coil: Para la carga y manipulación eficiente de imágenes.
-
-## Requisitos
-
-- Android Studio Iguana
-- Gradle Version 8.3
-- Kotlin 1.9.23 o superior.
-
-## Estructura del proyecto
--core: Modulo que contiene funcionalidades compartidas entre diferentes módulos de la aplicación.
-    -presentation: Contiene los componentes composables que se reutilizaran en toda la pantalla.
--authentication: Modulo que contiene todas las pantallas relacionadas a la autenticacion
-    -data: Contiene el repositorio donde se hace la creacion de usuario, logeo y validador de email
-    -di: Contiene el modulo que inyecta los repositorios, las usescases, el matcher y el firebaseAuth
-    -domain: Contiene los casos de uso, repitorio.
-    -presentation: Contiene las pantallas, viewmodel, eventos y state para la vista.
--home: Modulo que contiene todas las pantallas relacionadas a home.
-    -data: Contiene el repositorio donde se hace la creacion de notificaciones y habitos, la alarm manager para las alertas en segundo plano
-           la base de datos local, el workmanager y los mappers.
-    -di: Contiene el modulo que inyecta los repositorios, las usescases, retrofit, room, el work manager y alarmManager
-    -domain: Contiene los casos de uso, repitorio y models.
-    -presentation: Contiene las pantallas, viewmodel, eventos y state para la vista.
--onboarding: Modulo que contiene las pantallas relacionado al onboarding.
-    -data: Contiene el repositorio donde se guardar la datapreferences del usuario para que no se vuelva a mostrar el onboarding.
-    -di: Contiene el modulo que inyecta la datapreferences.
-    -domain: Contiene los casos de uso, repitorio.
-    -presentation: Contiene las pantallas, viewmodel, eventos y state para la vista.
--settings: Modulo que contiene la pantalla de ajustes y el cierre de sesión.
-    -presentation:Contiene las pantallas, viewmodel, eventos y state para la vista.
-navigation: Modulo que contiene toda la navegacion de pantallas.
-
-
-
-## Estructura de la app
-![Image text](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/structureproject.png)
-
 # HabitsApp
 
-## Onboarding Screens
+![Status](https://img.shields.io/badge/Status-En%20Desarrollo-orange?style=for-the-badge)
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9.23-purple?style=for-the-badge&logo=kotlin)
+![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android)
 
-![Onboarding 1](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding1.png) ![Onboarding 2](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding2.png) ![Onboarding 3](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding3.png)
+**HabitsApp** es una aplicación de gestión de hábitos diseñada bajo una estrategia **OfflineFirst**, garantizando que las funcionalidades clave estén disponibles siempre, incluso sin conexión a internet. La arquitectura se basa en **Clean Architecture**, el patrón de diseño **MVVM**, y los principios **SOLID**, utilizando las herramientas más actuales del ecosistema Android.
 
-![Onboarding 4](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding4.png)
+---
 
-## Authentication Screens
+## 📸 Screenshots
 
-![Authentication Login](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/authenticationlogin.png) ![Authentication Register](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/authenticationregister.png)
+### Onboarding
+| Paso 1 | Paso 2 | Paso 3 | Paso 4 |
+| :---: | :---: | :---: | :---: |
+| ![Onboarding 1](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding1.png) | ![Onboarding 2](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding2.png) | ![Onboarding 3](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding3.png) | ![Onboarding 4](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/onboarding4.png) |
 
-## Home Screens
+### Core & Auth
+| Login | Registro | Listado | Gestión |
+| :---: | :---: | :---: | :---: |
+| ![Login](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/authenticationlogin.png) | ![Register](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/authenticationregister.png) | ![Home](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/home_habits.png) | ![Create](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/home_create_habit.png) |
 
-![Home Habits](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/home_habits.png) ![Home Edit Habit](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/home_edit_habit.png) ![Home Create Habit](https://github.com/EliasMP07/HabitsApp/blob/master/app/src/main/assets/home_create_habit.png)
+---
 
+## ✨ Características Principales
 
+* 🚀 **Estrategia OfflineFirst:** Acceso y edición de hábitos sin conexión mediante Room.
+* 🔐 **Autenticación:** Gestión segura de usuarios con FirebaseAuth.
+* 🔄 **Sincronización:** Persistencia en tiempo real con Firebase Realtime Database.
+* ⏰ **Recordatorios:** Sistema de alertas persistentes usando `AlarmManager` y `WorkManager`.
+* 🎨 **UI Moderna:** Interfaces reactivas con Jetpack Compose y Material Design 3.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+| Herramienta | Badge |
+| :--- | :--- |
+| **Lenguaje** | ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat&logo=kotlin&logoColor=white) |
+| **UI** | ![Compose](https://img.shields.io/badge/Jetpack_Compose-4285F4?style=flat&logo=jetpackcompose&logoColor=white) |
+| **Local Storage** | ![Room](https://img.shields.io/badge/Room_DB-3DDC84?style=flat&logo=android&logoColor=white) |
+| **Cloud** | ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=firebase&logoColor=black) |
+| **Inyección** | ![Hilt](https://img.shields.io/badge/Hilt-DA282A?style=flat&logo=android&logoColor=white) |
+| **Async** | ![Coroutines](https://img.shields.io/badge/Coroutines-181717?style=flat&logo=kotlin&logoColor=white) |
+
+---
+
+## 🚀 Requisitos e Instalación
+
+### Requisitos previos
+* Android Studio Iguana
+* Gradle Versión 8.3
+* Kotlin 1.9.23 o superior
+
+### Instalación
+1.  Clona el repositorio:
+    ```bash
+    git clone [https://github.com/EliasMP07/HabitsApp.git](https://github.com/EliasMP07/HabitsApp.git)
+    ```
+2.  Importa el proyecto en Android Studio.
+3.  Agrega tu archivo `google-services.json` de Firebase en la carpeta `app/`.
+4.  Sincroniza Gradle y ejecuta en tu dispositivo/emulador.
+
+---
+
+## 📂 Arquitectura del Proyecto
+
+El proyecto está modularizado para mejorar la separación de conceptos y la escalabilidad:
+
+* **`:core`**: Funcionalidades compartidas y componentes UI comunes.
+* **`:authentication`**: Gestión de usuarios (Data, DI, Domain, Presentation).
+* **`:home`**: Módulo principal. Contiene la gestión de hábitos, Room, AlarmManager y WorkManager.
+* **`:onboarding`**: Flujo inicial y persistencia de `DataPreferences`.
+* **`:settings`**: Ajustes de usuario y cierre de sesión.
+* **`:navigation`**: Orquestación central de rutas y grafos de navegación.
+
+---
+
+## 🤝 Contribución
+
+Este proyecto es de uso privado/interno. Si eres parte del equipo de desarrollo, por favor sigue los flujos de trabajo establecidos en la arquitectura modular.
+
+---
+
+## 📄 Licencia
+
+Este proyecto es propiedad de **Elías Mena Pech**. Queda prohibida su reproducción total o parcial sin autorización.
